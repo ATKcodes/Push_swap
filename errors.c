@@ -12,10 +12,8 @@
 
 #include "pushswap.h"
 
-//Using pause until the end, where i'll use exit(0)
 void	ft_error(char *str)
 {
 	ft_putstr(str);
-	while (1)
-		pause();
+	exit(1);
 }

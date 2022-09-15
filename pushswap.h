@@ -20,7 +20,9 @@
 # include <fcntl.h>
 
 typedef struct s_pars{
-	int	count;
+	int		count;
+	int		pos;
+	long	*array;
 }			t_pars;
 
 typedef struct s_array{
@@ -30,6 +32,8 @@ typedef struct s_array{
 
 typedef struct s_split{
 	char	c;
+	char	**temp;
+	int		n;
 }			t_split;
 
 typedef struct s_push{
