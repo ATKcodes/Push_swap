@@ -16,33 +16,20 @@ void	free_temp(t_push *push)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	if (push->split.temp)
 	{
-		while (push->split.temp[++i])
+		while (push->split.temp[i++])
 			free(push->split.temp[i]);
 		free (push->split.temp);
 	}
 }
 
-void	free_stacks(t_push *push)
+void	not_int(t_push *push)
 {
-	int	i;
-
-	i = -1;
-	while (push->a.array[++i])
-		free(push->a.array[i]);
 	if (push->a.array)
 		free(push->a.array);
-	i = -1;
-	while (push->b.array[++i])
-		free(push->b.array[i]);
-	if (push->b.array)
-		free(push->b.array);
-	i = -1;
-	while (push->pars.array[++i])
-		free(push->pars.array[i]);
 	if (push->pars.array)
 		free(push->pars.array);
-	ft_error("invalid input : int_max or int_min exceeded");
+	ft_error("invalid input : int_max or int_min exceeded\n");
 }

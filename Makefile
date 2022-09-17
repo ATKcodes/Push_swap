@@ -1,6 +1,6 @@
-NAME = Push_swap
+NAME = push_swap
 
-SRCS = 	 main.c push_utils.c split.c errors.c	\
+SRCS = 	 main.c push_utils.c split.c errors.c free.c	\
 
 OBJS = ${SRCS:.c=.o}
 

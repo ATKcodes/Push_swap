@@ -43,14 +43,24 @@ typedef struct s_push{
 	t_split	split;
 }			t_push;
 
+void	ft_fillstack_a(t_push *push);
+void	ft_stackgen(int argc, char *argv[], t_push *push);
+void	fill_long(t_push *push);
+void	ft_parsing(int argc, char *argv[], t_push *push);
+
 void	ft_error(char *str);
 
-int		ft_strlen(char *str);
+void	not_int(t_push *push);
+void	free_temp(t_push *push);
 
-char	*dfltcase(const *s, int start, int len);
+long	ft_atolong(char *str, t_push *push);
+int		ft_strlen(char *str);
+int		ft_putstr(char *str);
+
+char	*dfltcase(char *s, int start, int len);
 char	*ft_substr(char *s, int start, int len);
-char	**ft_countwords(char *s, char c, int i, int n);
-char	**matrixgen(char *s, char c, int i, char **matrix);
+char	**ft_countwords(char *s, t_push *push, int i, int n);
+char	**matrixgen(char *s, t_push *push, int i, char **matrix);
 char	**ft_split(char *s, t_push *push);
 
 #endif

@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
+//Checka i numeri col meno dentro le ""
 void	ft_parsing(int argc, char *argv[], t_push *push)
 {
 	int	i;
 	int	c;
 
 	i = 0;
-	while (++i <= argc)
+	while (++i < argc)
 	{
 		c = -1;
 		push->split.n = 1;
@@ -33,11 +33,10 @@ void	ft_parsing(int argc, char *argv[], t_push *push)
 				if (argv[i][c] > 57 || argv[i][c] < 48)
 					ft_error("invalid input : no number after minus sign");
 			}
-			if (argv[i][c] > 57 || argv[i][c] < 48 || argv[i][c] != 32)
+			if ((argv[i][c] > 57 || argv[i][c] < 48) && argv[i][c] != 32)
 				ft_error("invalid input : forbidden char");
-			free_temp(push);
 		}
-		push->pars.count + push->split.n;
+		push->pars.count += push->split.n;
 	}
 }
 
@@ -48,7 +47,8 @@ void	fill_long(t_push *push)
 
 	i = -1;
 	while (push->split.temp[++i])
-		push->pars.array[push->pars.pos + i] = ft_atolong(push->split.temp[i]);
+		push->pars.array[push->pars.pos + i]
+			= ft_atolong(push->split.temp[i], push);
 	push->pars.pos = (push->pars.pos + i - 1);
 	free_temp(push);
 }
@@ -75,19 +75,21 @@ void	ft_stackgen(int argc, char *argv[], t_push *push)
 				while (argv[i][c])
 					c++;
 			}
+			else
+				push->pars.array[push->pars.pos] = ft_atolong(argv[i], push);
 		}
 		push->pars.pos++;
 	}
 }
 
 //Filling the A stack, all appropriate checks have been done.
-void	ft_fillstack_A(t_push *push)
+void	ft_fillstack_a(t_push *push)
 {
 	int	i;
 
 	i = -1;
 	while (++i < push->pars.count)
-		push->a.array[i] = push->pars.array[i];
+		push->a.array[i] = (int)push->pars.array[i];
 	push->a.size = push->pars.count;
 }
 
@@ -98,6 +100,12 @@ int	main(int argc, char *argv[])
 	push.split.temp = NULL;
 	push.pars.count = 0;
 	ft_parsing(argc, argv, &push);
+	
 	ft_stackgen(argc, argv, &push);
-	ft_fillstack_A(&push);
+	// for (int i = 0; i < 4; i++)
+	// 	printf("%ld\n", push.pars.array[i]);
+	ft_fillstack_a(&push);
+	printf("%d\n", push.a.size);
+	// for (int d = 0; d < 4; d++)
+	// 	printf("%d\n", push.a.array[d]);
 }

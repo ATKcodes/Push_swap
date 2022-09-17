@@ -45,7 +45,7 @@
 // 	return (i);
 // }
 
-char	*dfltcase(char *s, t_push *push, int start, int len)
+char	*dfltcase(char *s, int start, int len)
 {
 	char	*sub;
 	int		i;
@@ -68,14 +68,14 @@ char	*dfltcase(char *s, t_push *push, int start, int len)
 	return (sub);
 }
 
-char	*ft_substr(char *s, t_push *push, int start, int len)
+char	*ft_substr(char *s, int start, int len)
 {
 	char	*sub;
 
 	if (!s)
 		return (0);
 	if (ft_strlen(s) > start)
-		return (dfltcase(s, push, start, len));
+		return (dfltcase(s, start, len));
 	else
 	{
 		sub = malloc(sizeof(char) * 1);
@@ -119,11 +119,11 @@ char	**matrixgen(char *s, t_push *push, int i, char **matrix)
 	n = 0;
 	while (i < ft_strlen(s))
 	{
-		if (s[i] != ' ')
+		if (s[i] != push->split.c)
 		{
 			while (s[i + len] != push->split.c && i + len < ft_strlen(s))
 				len++;
-			matrix[n] = ft_substr(s, push, i, len);
+			matrix[n] = ft_substr(s, i, len);
 			n++;
 			i = i + len;
 			len = 0;

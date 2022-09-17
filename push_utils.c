@@ -37,10 +37,9 @@ long	ft_atolong(char *str, t_push *push)
 		i++;
 	}
 	if (r * c < -2147483648 || r * c > 2147483647)
-		free_stacks (push);
+		not_int(push);
 	return (r * c);
 }
-
 
 int	ft_strlen(char *str)
 {
@@ -50,4 +49,22 @@ int	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+int	ft_putstr(char *str)
+{
+	int	c;
+
+	c = 0;
+	if (str)
+	{
+		while (str[c] != '\0')
+		{
+			write(1, &str[c], 1);
+			c++;
+		}
+		return (c);
+	}
+	write (1, "(null)", 6);
+	return (6);
 }
