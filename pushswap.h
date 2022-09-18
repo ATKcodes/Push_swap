@@ -47,11 +47,13 @@ void	ft_fillstack_a(t_push *push);
 void	ft_stackgen(int argc, char *argv[], t_push *push);
 void	fill_long(t_push *push);
 void	ft_parsing(int argc, char *argv[], t_push *push);
+void	is_copy(t_push *push);
 
 void	ft_error(char *str);
 
 void	not_int(t_push *push);
 void	free_temp(t_push *push);
+void	free_copy(t_push *push);
 
 long	ft_atolong(char *str, t_push *push);
 int		ft_strlen(char *str);

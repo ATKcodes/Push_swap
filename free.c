@@ -33,3 +33,10 @@ void	not_int(t_push *push)
 		free(push->pars.array);
 	ft_error("invalid input : int_max or int_min exceeded\n");
 }
+
+void	free_copy(t_push *push)
+{
+	if (push->a.array)
+		free(push->a.array);
+	ft_error("invalid input : repeating numbers.");
+}

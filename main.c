@@ -50,7 +50,7 @@ void	fill_long(t_push *push)
 	while (push->split.temp[++i])
 		push->pars.array[push->pars.pos + i]
 			= ft_atolong(push->split.temp[i], push);
-	push->pars.pos = (push->pars.pos + i - 1);
+	push->pars.pos = (push->pars.pos + i);
 	free_temp(push);
 }
 
@@ -81,9 +81,11 @@ void	ft_stackgen(int argc, char *argv[], t_push *push)
 		}
 		push->pars.pos++;
 	}
+	ft_fillstack_a(push);
 }
 
 //Filling the A stack, all appropriate checks have been done.
+//I have no idea why i can't free the parsing array tbh. NEED HELP
 void	ft_fillstack_a(t_push *push)
 {
 	int	i;
@@ -92,6 +94,7 @@ void	ft_fillstack_a(t_push *push)
 	while (++i < push->pars.count)
 		push->a.array[i] = (int)push->pars.array[i];
 	push->a.size = push->pars.count;
+	//free(push->pars.array);
 }
 
 int	main(int argc, char *argv[])
@@ -102,10 +105,5 @@ int	main(int argc, char *argv[])
 	push.pars.count = 0;
 	ft_parsing(argc, argv, &push);
 	ft_stackgen(argc, argv, &push);
-	// for (int i = 0; i < 4; i++)
-	// 	printf("%ld\n", push.pars.array[i]);
-	ft_fillstack_a(&push);
-	printf("%d\n", push.a.size);
-	// for (int d = 0; d < 4; d++)
-	// 	printf("%d\n", push.a.array[d]);
+	is_copy(&push);
 }

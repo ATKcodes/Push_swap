@@ -60,3 +60,21 @@ char	*cut_spaces(char *str, int d)
 	new[c] = 0;
 	return (new);
 }
+
+void	is_copy(t_push *push)
+{
+	int	i;
+	int d;
+
+	i = 0;
+	if (push->a.size > 1)
+	while (++i < push->a.size)
+	{
+		d = -1;
+		while (++d < i)
+		{
+			if(push->a.array[d] == push->a.array[i])
+				free_copy(push);
+		}
+	}
+}

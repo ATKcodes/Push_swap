@@ -14,7 +14,10 @@ CFLAGS = -Wall -Wextra -Werror
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJS) -o $(NAME)
+
+$(NAMES): $(OBJS)
+	$(CC) $(OBJS) -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit -o $(NAMES)
 
 all:	${NAME}
 
