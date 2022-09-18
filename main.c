@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-//Checka i numeri col meno dentro le ""
+//Capisci perchè in fill_long l'ultimo argomento cambia,
+//Probs o è l'index o è il ciclo che non si chiude con while c++;
 void	ft_parsing(int argc, char *argv[], t_push *push)
 {
 	int	i;
@@ -25,7 +26,7 @@ void	ft_parsing(int argc, char *argv[], t_push *push)
 		while (++c < ft_strlen(argv[i]))
 		{
 			if (c != 0 && argv[i][c] == 32)
-				push->split.temp = ft_split(argv[i], push);
+				count_spaces(push, argv[i]);
 			else if (argv[i][c] == 45)
 			{
 				while (argv[i][++c] == 32)
@@ -40,7 +41,7 @@ void	ft_parsing(int argc, char *argv[], t_push *push)
 	}
 }
 
-//Filling the stack in case there is an edgecase with two or more numbers in a single argument of argv
+//Filling the stack in case there are two or more numbers in a single argv
 void	fill_long(t_push *push)
 {
 	int	i;
@@ -70,7 +71,7 @@ void	ft_stackgen(int argc, char *argv[], t_push *push)
 		{
 			if (c != 0 && argv[i][c] == 32)
 			{
-				push->split.temp = ft_split(argv[i], push);
+				count_spaces(push, argv[i]);
 				fill_long(push);
 				while (argv[i][c])
 					c++;
@@ -100,7 +101,6 @@ int	main(int argc, char *argv[])
 	push.split.temp = NULL;
 	push.pars.count = 0;
 	ft_parsing(argc, argv, &push);
-	
 	ft_stackgen(argc, argv, &push);
 	// for (int i = 0; i < 4; i++)
 	// 	printf("%ld\n", push.pars.array[i]);

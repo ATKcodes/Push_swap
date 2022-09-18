@@ -26,6 +26,7 @@
 
 // typedef struct s_split{
 // 	char	c;
+// 	int		n;
 // }			t_split;
 
 // typedef struct s_push{
@@ -163,7 +164,7 @@ char	**ft_split(char *s, t_push *push)
 // 	i = -1;
 // 	d = 0;
 // 	push.pars.count = 0;
-// 	str = "1 2    3     4";
+// 	str = "-1 2    3     4";
 // 	matrix = ft_split(str, &push);
 // 	while (++i < 4)
 // 		printf("%s\n", matrix[i]);
