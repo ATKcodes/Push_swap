@@ -39,6 +39,7 @@ typedef struct s_split{
 typedef struct s_push{
 	t_array	a;
 	t_array	b;
+	t_array	c;
 	t_pars	pars;
 	t_split	split;
 }			t_push;

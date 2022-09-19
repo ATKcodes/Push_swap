@@ -11,8 +11,7 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-//Capisci perchè in fill_long l'ultimo argomento cambia,
-//Probs o è l'index o è il ciclo che non si chiude con while c++;
+
 void	ft_parsing(int argc, char *argv[], t_push *push)
 {
 	int	i;
@@ -84,17 +83,17 @@ void	ft_stackgen(int argc, char *argv[], t_push *push)
 	ft_fillstack_a(push);
 }
 
-//Filling the A stack, all appropriate checks have been done.
-//I have no idea why i can't free the parsing array tbh. NEED HELP
 void	ft_fillstack_a(t_push *push)
 {
 	int	i;
 
 	i = -1;
+	push->pars.array[push->a.size] = 0;
 	while (++i < push->pars.count)
 		push->a.array[i] = (int)push->pars.array[i];
 	push->a.size = push->pars.count;
-	//free(push->pars.array);
+	push->a.array[push->a.size] = 0;
+	free(push->pars.array);
 }
 
 int	main(int argc, char *argv[])
