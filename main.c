@@ -105,4 +105,7 @@ int	main(int argc, char *argv[])
 	ft_parsing(argc, argv, &push);
 	ft_stackgen(argc, argv, &push);
 	is_copy(&push);
+	sorting(&push);
+	for (int i = 0; i < push.a.size; i++)
+		printf("%d", push.c.array[i]);
 }

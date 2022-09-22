@@ -63,6 +63,9 @@ int		ft_putstr(char *str);
 void	count_spaces(t_push *push, char *str);
 char	*cut_spaces(char *str, int d);
 
+void	swap(t_push *push, int i);
+void	sorting(t_push *push);
+
 char	*dfltcase(char *s, int start, int len);
 char	*ft_substr(char *s, int start, int len);
 char	**ft_countwords(char *s, t_push *push, int i, int n);

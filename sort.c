@@ -16,27 +16,25 @@ void	sorting(t_push *push)
 {
 	int	i;
 
+	push->c.size = push->a.size;
 	push->c.array = malloc (sizeof(int) * push->a.size);
 	push->c.array[push->a.size] = 0;
 	i = -1;
+	while (push->a.array[++i])
+		push->c.array[i] = push->a.array[i];
+	i = -1;
 	while (++i < push->a.size)
 	{
-		inserting(push, i);
+		if (push->c.array[i] > push->c.array[i + 1])
+			swap(push, i);
 	}
 }
 
-void	inserting(t_push *push, int i)
+void	swap(t_push *push, int i)
 {
-	int	d;
+	int	temp;
 
-	d = -1;
-	while (++d < i)
-	{
-		if (push->a.size[i] < )
-	}
-}
-
-void	swap(t_push *push, int i, int d)
-{
-
+	temp = push->c.array[i];
+	push->c.array[i] = push->c.array[i + 1];
+	push->c.array[i + 1] = temp;
 }
