@@ -4,14 +4,14 @@ SRCS = 	 main.c push_utils.c split.c errors.c free.c parsing.c sort.c \
 
 OBJS = ${SRCS:.c=.o}
 
-CC		= gcc
+CC		= gcc -g -fsanitize=address
 RM		= rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 #CFLAGS = -g
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME)

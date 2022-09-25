@@ -59,10 +59,10 @@ void	ft_stackgen(int argc, char *argv[], t_push *push)
 	int	c;
 	int	i;
 
-	i = -1;
+	i = 0;
 	push->a.array = malloc (sizeof(int) * push->pars.count);
 	push->pars.array = malloc (sizeof(long) * push->pars.count);
-	push->pars.pos = -1;
+	push->pars.pos = 0;
 	while (++i < argc)
 	{
 		c = -1;
@@ -76,9 +76,11 @@ void	ft_stackgen(int argc, char *argv[], t_push *push)
 					c++;
 			}
 			else
+			{
 				push->pars.array[push->pars.pos] = ft_atolong(argv[i], push);
-		}
+			}
 		push->pars.pos++;
+		}
 	}
 	ft_fillstack_a(push);
 }
@@ -88,11 +90,9 @@ void	ft_fillstack_a(t_push *push)
 	int	i;
 
 	i = -1;
-	push->pars.array[push->a.size] = 0;
 	while (++i < push->pars.count)
 		push->a.array[i] = (int)push->pars.array[i];
 	push->a.size = push->pars.count;
-	push->a.array[push->a.size] = 0;
 	free(push->pars.array);
 }
 
@@ -106,6 +106,6 @@ int	main(int argc, char *argv[])
 	ft_stackgen(argc, argv, &push);
 	is_copy(&push);
 	sorting(&push);
-	for (int i = 0; i < push.a.size; i++)
-		printf("%d", push.c.array[i]);
+	for (int c = 0; c < push.c.size; c++)
+		printf("%d\n", push.c.array[c]);
 }

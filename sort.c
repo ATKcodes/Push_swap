@@ -18,14 +18,13 @@ void	sorting(t_push *push)
 
 	push->c.size = push->a.size;
 	push->c.array = malloc (sizeof(int) * push->a.size);
-	push->c.array[push->a.size] = 0;
 	i = -1;
-	while (push->a.array[++i])
+	while (++i < push->a.size)
 		push->c.array[i] = push->a.array[i];
 	i = -1;
 	while (++i < push->a.size)
 	{
-		if (push->c.array[i] > push->c.array[i + 1])
+		if (i + 1 < push->a.size && push->c.array[i] > push->c.array[i + 1])
 			swap(push, i);
 	}
 }
